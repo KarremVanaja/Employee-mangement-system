@@ -1,0 +1,11 @@
+# Without registering app,Django won't detect models or templates
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'employees',  # Register employees app
+]
