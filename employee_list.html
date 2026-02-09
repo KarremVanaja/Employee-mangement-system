@@ -1,0 +1,123 @@
+{% extends 'employees/base.html' %}
+
+{% block content %}
+
+<!-- Page Title -->
+<h2 style="
+    margin-bottom:25px;
+    font-family:'Segoe UI', Tahoma, Arial, sans-serif;
+    color:#2c3e50;
+">
+    📊 Employee Dashboard
+</h2>
+
+<!-- Action Bar -->
+<div style="
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+">
+    <span style="
+        font-family:'Segoe UI', Arial, sans-serif;
+        color:#555;
+        font-size:14px;
+    ">
+        Manage all employee records below
+    </span>
+
+    <a href="{% url 'employee_create' %}"
+       style="
+            text-decoration:none;
+            padding:10px 20px;
+            background-color:#1abc9c;
+            color:white;
+            border-radius:6px;
+            font-family:'Segoe UI', Arial, sans-serif;
+            font-weight:600;
+            font-size:14px;
+       ">
+        ➕ Add Employee
+    </a>
+</div>
+
+<!-- Employee Table Card -->
+<div style="
+    background-color:white;
+    border-radius:8px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.1);
+    overflow:hidden;
+">
+
+<table style="
+        width:100%;
+        border-collapse:collapse;
+        font-family:'Segoe UI', Arial, sans-serif;
+">
+    <thead>
+        <tr style="
+            background-color:#16a085;
+            color:white;
+            text-align:left;
+        ">
+            <th style="padding:14px;">Name</th>
+            <th style="padding:14px;">Email</th>
+            <th style="padding:14px;">Department</th>
+            <th style="padding:14px;">Salary</th>
+            <th style="padding:14px;">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for emp in employees %}
+        <tr style="background-color:{% cycle '#f9fffd' '#eefaf6' %};">
+            <td style="padding:12px; font-weight:600; color:#2c3e50;">
+                {{ emp.name }}
+            </td>
+            <td style="padding:12px; color:#555;">
+                {{ emp.email }}
+            </td>
+            <td style="padding:12px; color:#16a085; font-weight:600;">
+                {{ emp.department }}
+            </td>
+            <td style="padding:12px; color:#8e44ad; font-weight:600;">
+                ₹ {{ emp.salary }}
+            </td>
+            <td style="padding:12px;">
+                <a href="{% url 'employee_update' emp.id %}"
+                   style="
+                        text-decoration:none;
+                        color:#2980b9;
+                        font-weight:600;
+                        margin-right:12px;
+                   ">
+                    ✏ Edit
+                </a>
+                <a href="{% url 'employee_delete' emp.id %}"
+                   style="
+                        text-decoration:none;
+                        color:#c0392b;
+                        font-weight:600;
+                   ">
+                    🗑 Delete
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" style="
+                padding:20px;
+                text-align:center;
+                font-style:italic;
+                color:#7f8c8d;
+            ">
+                No employees found.
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
+
+{% endblock %}
