@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Management</title>
+
+    <!-- Link external CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>Employee Management System</h1>
+        <p>Manage employee details efficiently</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="{% url 'employee_list' %}">Home</a>
+        <a href="{% url 'employee_create' %}">Add Employee</a>
+        <a href="/admin/">Admin</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 Employee Management System | Built with Django</p>
+    </footer>
+
+</body>
+</html>
+
+
+# CSS FILE CODE as Static/css/style.css
+/* General page styling */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+/* Header styling */
+.header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+.header p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #dcdcdc;
+}
+
+/* Navigation bar */
+.navbar {
+    background-color: #ecf0f1;
+    padding: 12px;
+    text-align: center;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 600;
+    margin: 0 15px;
+}
+
+.navbar a:hover {
+    color: #2980b9;
+}
+
+/* Main content area */
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 13px;
+    color: #666;
+}
